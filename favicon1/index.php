@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="favicon.php?v=4<?php echo "-"// . time(); ?>">
+  <link rel="shortcut icon" href="favicon.php?v=5<?php echo "-"// . time(); ?>">
   <title>Document</title>
 </head>
 

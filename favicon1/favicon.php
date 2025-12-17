@@ -14,9 +14,15 @@ $black = imagecolorallocate($img, 0, 0, 0);
 imagefill($img, 0, 0, $black);
 
 // Put information
-$message = [11,22,33,4,0,5];
-error_log(implode(",", $message) . PHP_EOL, 3, __DIR__ . '/app.log');
-$id = array_slice($message, 0, $size * $size * 3);
+$message = microtime(1) * 10000;
+$message_arr = [];
+while ($message > 0) {
+    $i = $message % 256;
+    $message_arr[] = $i;
+    $message = $message / 256 | 0;
+}
+error_log(implode(",", $message_arr) . PHP_EOL, 3, __DIR__ . '/app.log');
+$id = array_slice($message_arr, 0, $size * $size * 3);
 for ($i=0; $i < count($id); $i += 3) {
     $r = $id[$i];
     $g = $id[$i + 1] ?? 0;
