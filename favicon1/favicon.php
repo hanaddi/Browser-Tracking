@@ -1,9 +1,18 @@
 <?php
 // favicon.php or favicon.ico (served via PHP)
 
+// Cache for 1 year
+$seconds = 31536000; // 365 days
+
 // Send image headers
 header('Content-Type: image/png');
-header('Cache-Control: public, max-age=86400');
+// Cache-Control header (recommended)
+header("Cache-Control: public, max-age={$seconds}, immutable");
+// Expires header (1 year from now, GMT)
+header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $seconds) . ' GMT');
+// Persistent ETag (can be any stable string)
+$etag = 'abc123def456';
+header('ETag: ' . $etag);
 
 // Create a 32x32 black image
 $size = 32;
